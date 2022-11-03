@@ -2,17 +2,20 @@ import React, {useState, useRef, useEffect} from 'react';
 import './App.css';
 import Recetario from './Recetario';
 import { v4 as uuidv4 } from 'uuid';
+
 const LOCAL_STORAGE_KEY = "recetario.recetas"
 function App() {
   const [recetas, setRecetas] = useState([])
   const refReceta = useRef()
   const refIngredientes = useRef()
   const refInstrucciones = useRef()
+  const refImg = useRef()
 
   function seleccionarReceta(id){
     const nrecetas = [...recetas]
     const receta = nrecetas.find(receta => receta.id === id)
     receta.seleccionar = !receta.seleccionar
+    console.log(receta);
     setRecetas(nrecetas)
   }
 
@@ -20,13 +23,15 @@ function App() {
     const nombre = refReceta.current.value
     const ingredientes = refIngredientes.current.value
     const instrucciones = refInstrucciones.current.value
-    if (nombre === "" || ingredientes === "" || instrucciones === "") return
+    const imagen = refImg.current.value
+    if (nombre === "" || ingredientes === "" || instrucciones === "" ) return
     setRecetas(prevReceta => {
-      return [...prevReceta, { id: uuidv4(), nombre: nombre, ingredientes: ingredientes, instrucciones: instrucciones, seleccionar: false}]
+      return [...prevReceta, { id: uuidv4(), nombre: nombre, ingredientes: ingredientes, instrucciones: instrucciones, imagen: imagen,seleccionar: false}]
     })
     refReceta.current.value = null
     refIngredientes.current.value = null
     refInstrucciones.current.value = null
+    refImg.current.value = null
 
   }
 
@@ -52,7 +57,7 @@ function App() {
         <div id="recetario">
           <Recetario recetas={recetas} seleccionarReceta={seleccionarReceta}/>
           <div>Eliminar {recetas.filter(receta => receta.seleccionar).length} recetas</div>
-          <button onClick={eliminarReceta}>Eliminar</button>
+          <button id="eliminarBtn" onClick={eliminarReceta}>Eliminar</button>
         </div>
         
         <div id="formulario">
@@ -69,9 +74,15 @@ function App() {
             <p class="texto">Instrucciones</p>
             <textarea ref={refInstrucciones} type="text"></textarea>
           </div>
+          <div>
+            <p class="texto">URL de imagen</p>
+            <input ref={refImg} type='text'></input>
+          </div>
           <button class="button2" onClick={agregarReceta}>Añadir</button>
         </div>
       </div>
+
+      
             
     </>
   )

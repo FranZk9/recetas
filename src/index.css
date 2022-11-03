@@ -34,7 +34,7 @@ code {
   margin-right: 10px;
   background-color: #6fb3b8;
   text-align: center;
-  height: 540px;
+  height: 600px;
   border-radius: 40px;
 }
 
@@ -95,3 +95,15 @@ textarea {
   font-size: larger;
 }
 
+#imagen {
+  width: 40%;
+}
+
+#eliminarBtn {
+  color: black;
+  background-color: lightcoral;
+  border: none;
+  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 40px;
+}

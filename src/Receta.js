@@ -49,7 +49,7 @@ export default function Receta({receta, seleccionarReceta}) {
         <label>
           <div id = "nombreR">
             <input type="checkbox" class="checkmark" checked={receta.seleccionar} onChange={handleClick}/>
-            {receta.nombre} 
+            {receta.nombre}
             <button class="button3" type='button' id="editar" onClick={() => setShow2(!show2)}>Editar</button>
             {show2 && <div id='formulario2'>
               <div>Editar nombre<br></br><input ref={editNombre} type='text'></input></div>
@@ -57,6 +57,9 @@ export default function Receta({receta, seleccionarReceta}) {
               <div>Editar instrucciones<br></br><textarea ref={editInst} type='text'></textarea></div>
               <br></br><button class='button' type='button' onClick={() => editarReceta()}>{'Guardar cambios'}</button>
               </div>}
+          </div>
+          <div>
+          <img id="imagen" src={receta.imagen} alt="Sin imagen"/>
           </div>
           <div>
             <p id="ingrT">Ingredientes:</p>
