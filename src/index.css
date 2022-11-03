@@ -80,6 +80,16 @@ textarea {
   border-radius: 40px;
 }
 
+.button3 {
+  background-color: teal;
+  color: whitesmoke;
+  cursor: pointer;
+  border: none;
+  border-radius: 40px;
+  padding: 8px 12px;
+  margin-left: 10px;
+}
+
 .texto {
   color: whitesmoke;
   font-size: larger;

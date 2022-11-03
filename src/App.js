@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import React, {useState, useRef, useEffect} from 'react';
 import './App.css';
 import Recetario from './Recetario';
@@ -35,6 +34,7 @@ function App() {
     const nreceta = recetas.filter(receta => !receta.seleccionar)
     setRecetas(nreceta)
   }
+
 
   useEffect(() =>{
     const recetasStorage = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY))
