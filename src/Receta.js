@@ -48,14 +48,14 @@ export default function Receta({receta, seleccionarReceta}) {
       <div id="containerReceta">
         <label>
           <div id = "nombreR">
-            <input type="checkbox" class="checkmark" checked={receta.seleccionar} onChange={handleClick}/>
+            <input type="checkbox" data-testid='check' className="checkmark" checked={receta.seleccionar} onChange={handleClick}/>
             {receta.nombre}
-            <button class="button3" type='button' id="editar" onClick={() => setShow2(!show2)}>Editar</button>
+            <button data-testid='btnEditar' className="button3" type='button' id="editar" onClick={() => setShow2(!show2)}>Editar</button>
             {show2 && <div id='formulario2'>
-              <div>Editar nombre<br></br><input ref={editNombre} type='text'></input></div>
-              <div>Editar ingredientes<br></br><textarea ref={editIngr} type='text'></textarea></div>
-              <div>Editar instrucciones<br></br><textarea ref={editInst} type='text'></textarea></div>
-              <br></br><button class='button' type='button' onClick={() => editarReceta()}>{'Guardar cambios'}</button>
+              <div>Editar nombre<br></br><input data-testid='editN' ref={editNombre} type='text'></input></div>
+              <div>Editar ingredientes<br></br><textarea data-testid='editIn' ref={editIngr} type='text'></textarea></div>
+              <div>Editar instrucciones<br></br><textarea data-testid='editIs' ref={editInst} type='text'></textarea></div>
+              <button data-testid='btnGuardar' className='button' type='button' onClick={() => editarReceta()}>Guardar cambios</button>
               </div>}
           </div>
           <div>
@@ -65,7 +65,7 @@ export default function Receta({receta, seleccionarReceta}) {
             <p id="ingrT">Ingredientes:</p>
             <p id="ingrC">{receta.ingredientes}</p>
           </div>
-          <button class="button" type='button' id="ocultar" onClick={() => setShow(!show)}>{show === true ? 'Menos información' : 'Más información'}</button>
+          <button className="button" type='button' data-testid='masinfo' id="ocultar" onClick={() => setShow(!show)}>{show === true ? 'Menos información' : 'Más información'}</button>
           {show && <div id="inst">
             <p>Instrucciones</p>
             <p>{receta.instrucciones}</p>
